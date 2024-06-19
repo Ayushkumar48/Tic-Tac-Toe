@@ -1,3 +1,5 @@
+let player1 = prompt("Enter name of player 1 ( Player X )");
+let player2 = prompt("Enter name of player 2 ( Player O )");
 let gameArr = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 let flag = false;
 let count = 0;
@@ -25,12 +27,12 @@ for (let i = 0; i < 9; i++) {
       let ans = isWon();
       if (ans === 1) {
         setTimeout(() => {
-          alert("Player 1 won the game !!!");
+          alert(`${player1} won the game !!!`);
           resetGame();
         }, 100);
       } else if (ans === 2) {
         setTimeout(() => {
-          alert("Player 2 won the game !!!");
+          alert(`${player2} won the game !!!`);
           resetGame();
         }, 100);
       } else if (count === 9 && ans === 0) {

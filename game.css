@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'OPTIDynamo';
+    src:url('/Fonts/OPTIDynamo.ttf.woff') format('woff'),
+        url('/Fonts/OPTIDynamo.ttf.svg#OPTIDynamo') format('svg'),
+        url('/Fonts/OPTIDynamo.ttf.eot'),
+        url('/Fonts/OPTIDynamo.ttf.eot?#iefix') format('embedded-opentype'); 
+        font-weight: normal;
+        font-style: normal;
+}
+body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-image: linear-gradient(90deg, #fff7ad, #ffa9f9);
+}
+.main-div{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    margin: 0 auto;
+}
+.icon{
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 100px;
+    max-width: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    border: 3px solid black;
+    border-radius: 4px;
+}
+.button-div{
+    margin: 30px;
+}
+.h1-div{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 100px;
+    font-family: 'OPTIDynamo';
+    color: #ffa857;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+.winning-div{
+    margin-top: 25px;
+    display: none;
+    display: none;
+    margin-bottom: 25px;
+}
+.draw-div{
+    margin-bottom: 25px;
+    margin-top: -20px;
+    display: none;
+}
+.outer-div{
+    margin-top: 150px;
+}

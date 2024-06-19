@@ -1,44 +1,40 @@
-body{
+@font-face{
+    font-family: "Gagalin-Regular";
+    src: url("/Fonts/Gagalin.eot");
+    src: url("/Fonts/Gagalin.eot?#iefix")format("embedded-opentype"),
+        url("/Fonts/Gagalin.woff")format("woff"),
+        url("/Fonts/Gagalin.woff2")format("woff2"),
+        url("/Fonts/Gagalin.ttf")format("truetype"),
+        url("/Fonts/Gagalin.svg#Gagalin-Regular")format("svg");
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+body {
     margin: 0;
     padding: 0;
-    text-align: center;
-    background-color: rgba(159, 46, 23, 0.326);
-}
-.main-div{
+    height: 100vh;
     display: flex;
     justify-content: center;
-    width: 100px;
-    margin: 0 auto;
-}
-.icon{
-    margin: 5px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    max-height: 100px;
-    max-width: 100px;
-    min-width: 100px;
-    min-height: 100px;
-    border: 3px solid black;
-    border-radius: 4px;
+    background-image: linear-gradient(90deg, #fff7ad, #ffa9f9);
 }
-.button-div{
-    margin: 30px;
+
+.center-div {
+    text-align: center;
 }
-.h1-div{
-    font-size: 50px;
-    font-family: 'Courier New', Courier, monospace;
-    margin-top: 25px;
-    margin-bottom: 0px;
+
+.main-heading {
+    margin-top: -150px;
+    font-family: "Gagalin-Regular";
+    font-weight: 400;
+    font-size: 80px;
+    font-style: normal;
+    color: teal;
 }
-.winning-div{
-    margin-top: 25px;
-    display: none;
-    display: none;
-    margin-bottom: 25px;
-}
-.draw-div{
-    margin-bottom: 25px;
-    margin-top: -20px;
-    display: none;
+#play-btn{
+    padding: 20px 50px 20px 50px;
+    font-size: 25px;
+    margin-left: -20px;
+    color: indigo;
 }

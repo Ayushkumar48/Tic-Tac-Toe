@@ -1,57 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic-Tac-Toe</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="game.css">
-    <script defer src="game.js"></script>
-    <script defer src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="game.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
+    <div class="inputs">
+        <form>
+            <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" id="player1" placeholder="Player 1" />
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="player2" placeholder="Player 2" />
+                </div>
+            </div>
+        </form>
+        <div id="playbutton">
+            <button type="button"
+                class="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                id="play-btn">
+                Play
+            </button>
+        </div>
+    </div>
     <div class="outer-div">
         <div class="main-div">
-            <div class="icon" id="1">
-                <!-- <i class="fa-solid fa-xmark fa-4x" style="color: #B197FC;"></i> -->
-            </div>
-            <div class="icon" id="2">
-                <!-- <i class="fa-solid fa-xmark fa-4x" style="color: #B197FC;"></i> -->
-            </div>
-            <div class="icon" id="3">
-                <!-- <i class="fa-solid fa-xmark fa-4x" style="color: #B197FC;"></i> -->
-            </div>
+            <div class="icon" id="1"></div>
+            <div class="icon" id="2"></div>
+            <div class="icon" id="3"></div>
         </div>
         <div class="main-div">
-            <div class="icon" id="4">
-                <!-- <i class="fa-solid fa-xmark fa-4x" style="color: #B197FC;"></i> -->
-            </div>
-            <div class="icon" id="5">
-                <!-- <i class="fa-solid fa-xmark fa-4x" style="color: #B197FC;"></i> -->
-            </div>
-            <div class="icon" id="6">
-                <!-- <i class="fa-solid fa-xmark fa-4x" style="color: #B197FC;"></i> -->
-            </div>
+            <div class="icon" id="4"></div>
+            <div class="icon" id="5"></div>
+            <div class="icon" id="6"></div>
         </div>
         <div class="main-div">
-            <div class="icon" id="7">
-                <!-- <i class="fa-solid fa-o fa-4x" style="color: #FFD43B;"></i> -->
-            </div>
-            <div class="icon" id="8">
-                <!-- <i class="fa-solid fa-xmark fa-4x" style="color: #B197FC;"></i> -->
-            </div>
-            <div class="icon" id="9">
-                <!-- <i class="fa-solid fa-xmark fa-4x" style="color: #B197FC;"></i> -->
-            </div>
+            <div class="icon" id="7"></div>
+            <div class="icon" id="8"></div>
+            <div class="icon" id="9"></div>
+        </div>
+        <div class="button-div">
+            <button
+                class="reset-btn bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+                Reset
+            </button>
         </div>
     </div>
-    <div class="winning-div">You Won!!!</div>
-    <div class="draw-div">It's a draw.</div>
-    <div class="reset-btn">
-        <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Reset</button>
+    <div class="endgame-div">
+        <p class="won-para">
+            Miracle Miracle <br />
+            It's a draw!!!
+        </p>
+        <br />
+        <button type="button"
+            class="playagain-btn text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            Play Again
+        </button>
+        <button type="button"
+            class="newgame-btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            New Game
+        </button>
     </div>
     <div class="heading-div">
-        <h1 class="h1-div">TIC<br>TAC<br>TOE</h1>
+        <h1 class="h1-div">TIC<br />TAC<br />TOE</h1>
     </div>
+    <script defer src="game.js"></script>
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

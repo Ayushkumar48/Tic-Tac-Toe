@@ -1,104 +1,108 @@
-let player1 = prompt("Enter name of player 1 ( Player X )");
-let player2 = prompt("Enter name of player 2 ( Player O )");
-let gameArr = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-let flag = false;
-let count = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  let player1, player2;
+  const playbtn = document.getElementById("play-btn");
 
-for (let i = 0; i < 9; i++) {
-  let currEle = document.getElementById(`${i + 1}`);
-  currEle.addEventListener("click", () => {
-    if (gameArr[i] === 0) {
-      if (!flag) {
-        const newEle = document.createElement("i");
-        newEle.classList.add("fa-solid", "fa-xmark", "fa-4x", "div-icon");
-        newEle.style.color = "#B197FC";
-        currEle.appendChild(newEle);
-        gameArr[i] = 1;
-        flag = true;
-      } else {
-        const newEle = document.createElement("i");
-        newEle.classList.add("fa-solid", "fa-o", "fa-4x", "div-icon");
-        newEle.style.color = "#3B93AA";
-        currEle.appendChild(newEle);
-        gameArr[i] = 2;
-        flag = false;
-      }
-      count++;
-      let ans = isWon();
-      if (ans === 1) {
-        setTimeout(() => {
-          alert(`${player1} won the game !!!`);
-          resetGame();
-        }, 100);
-      } else if (ans === 2) {
-        setTimeout(() => {
-          alert(`${player2} won the game !!!`);
-          resetGame();
-        }, 100);
-      } else if (count === 9 && ans === 0) {
-        let winTxt = document.querySelector(".winning-div");
-        let drawDiv = document.querySelector(".draw-div");
-        winTxt.textContent = "Miracle!!! Miracle!!!";
-        winTxt.style.display = "block";
-        drawDiv.style.display = "block";
-      }
+  playbtn.addEventListener("click", () => {
+    player1 = document.getElementById("player1").value.trim();
+    player2 = document.getElementById("player2").value.trim();
+
+    // Validate player names
+    if (player1 === "" || player2 === "") {
+      alert("Please enter names for both players.");
+      return;
     }
+
+    localStorage.setItem("player1", player1);
+    localStorage.setItem("player2", player2);
+
+    document.querySelector(".inputs").style.display = "none";
+    document.querySelector(".outer-div").style.display = "block";
+    document.querySelector(".endgame-div").style.display = "none";
+
+    resetGame();
   });
-}
 
-const isWon = () => {
-  for (let i = 0; i < 9; i += 3) {
-    if (
-      gameArr[i] === gameArr[i + 1] &&
-      gameArr[i + 1] === gameArr[i + 2] &&
-      gameArr[i] !== 0
-    ) {
-      return gameArr[i];
-    }
-  }
-  for (let i = 0; i < 3; i++) {
-    if (
-      gameArr[i] === gameArr[i + 3] &&
-      gameArr[i + 3] === gameArr[i + 6] &&
-      gameArr[i] !== 0
-    ) {
-      return gameArr[i];
-    }
-  }
-  if (
-    gameArr[0] === gameArr[4] &&
-    gameArr[4] === gameArr[8] &&
-    gameArr[0] !== 0
-  ) {
-    return gameArr[0];
-  }
-  if (
-    gameArr[2] === gameArr[4] &&
-    gameArr[4] === gameArr[6] &&
-    gameArr[2] !== 0
-  ) {
-    return gameArr[2];
-  }
-  return 0;
-};
+  const playagainbtn = document.querySelector(".playagain-btn");
+  const newgamebtn = document.querySelector(".newgame-btn");
 
-const resetGame = () => {
-  let icons = document.querySelectorAll(".div-icon");
-  icons.forEach((icon) => {
-    icon.remove();
+  newgamebtn.addEventListener("click", () => {
+    window.location.href = "index.html";
   });
+
+  playagainbtn.addEventListener("click", () => {
+    resetGame();
+
+    player1 = localStorage.getItem("player1");
+    player2 = localStorage.getItem("player2");
+
+    document.querySelector(".outer-div").style.display = "block";
+    document.querySelector(".endgame-div").style.display = "none";
+  });
+
+  const gameArr = Array(9).fill(0);
+  let flag = false;
+  let count = 0;
+
   for (let i = 0; i < 9; i++) {
-    gameArr[i] = 0;
+    const currEle = document.getElementById(`${i + 1}`);
+    currEle.addEventListener("click", () => handleMove(i, currEle));
   }
-  flag = false;
-  count = 0;
-  let winTxt = document.querySelector(".winning-div");
-  let drawDiv = document.querySelector(".draw-div");
-  winTxt.style.display = "none";
-  drawDiv.style.display = "none";
-};
 
-let reset = document.querySelector(".reset-btn");
-reset.addEventListener("click", () => {
-  resetGame();
+  function handleMove(index, element) {
+    if (gameArr[index] !== 0) return;
+
+    const newEle = document.createElement("i");
+    newEle.classList.add("fa-solid", flag ? "fa-o" : "fa-xmark", "fa-4x", "div-icon");
+    newEle.style.color = flag ? "#3B93AA" : "#B197FC";
+    element.appendChild(newEle);
+
+    gameArr[index] = flag ? 2 : 1;
+    flag = !flag;
+    count++;
+
+    const winner = isWon();
+    let wonpara = document.querySelector(".won-para");
+
+    if (winner) {
+      document.querySelector(".outer-div").style.display = "none";
+      document.querySelector(".inputs").style.display = "none";
+      wonpara.textContent = `${winner === 1 ? player1 : player2} won the game !!!`;
+      document.querySelector(".endgame-div").style.display = "block";
+    } else if (count === 9) {
+      document.querySelector(".outer-div").style.display = "none";
+      document.querySelector(".inputs").style.display = "none";
+      document.querySelector(".won-para").innerHTML = "Miracle Miracle <br> It's a draw!!!";
+      document.querySelector(".endgame-div").style.display = "block";
+    }
+  }
+
+  function isWon() {
+    const winningCombinations = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
+    ];
+
+    for (const [a, b, c] of winningCombinations) {
+      if (gameArr[a] && gameArr[a] === gameArr[b] && gameArr[a] === gameArr[c]) {
+        return gameArr[a];
+      }
+    }
+    return 0;
+  }
+
+  function resetGame() {
+    document.querySelectorAll(".icon").forEach(icon => icon.innerHTML = "");
+
+    gameArr.fill(0);
+    flag = false;
+    count = 0;
+
+    document.querySelector(".won-para").textContent = "";
+    document.querySelector(".endgame-div").style.display = "none";
+    document.querySelector(".inputs").style.display = "none";
+    document.querySelector(".outer-div").style.display = "block";
+  }
+
+  document.querySelector(".reset-btn").addEventListener("click", resetGame);
 });

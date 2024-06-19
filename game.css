@@ -4,22 +4,26 @@
         url('/Fonts/OPTIDynamo.ttf.svg#OPTIDynamo') format('svg'),
         url('/Fonts/OPTIDynamo.ttf.eot'),
         url('/Fonts/OPTIDynamo.ttf.eot?#iefix') format('embedded-opentype'); 
-        font-weight: normal;
-        font-style: normal;
+    font-weight: normal;
+    font-style: normal;
 }
-body{
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+ES:wght@100..400&display=swap');
+
+body {
     margin: 0;
     padding: 0;
     text-align: center;
     background-image: linear-gradient(90deg, #fff7ad, #ffa9f9);
 }
-.main-div{
+
+.main-div {
     display: flex;
     justify-content: center;
     width: 100px;
     margin: 0 auto;
 }
-.icon{
+
+.icon {
     margin: 5px;
     display: flex;
     align-items: center;
@@ -31,10 +35,14 @@ body{
     border: 3px solid black;
     border-radius: 4px;
 }
-.button-div{
+
+.button-div {
     margin: 30px;
+    justify-content: center;
+    text-align: center;
 }
-.h1-div{
+
+.h1-div {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -44,17 +52,50 @@ body{
     margin-top: 25px;
     margin-bottom: 0px;
 }
-.winning-div{
+
+.winning-div {
     margin-top: 25px;
-    display: none;
     display: none;
     margin-bottom: 25px;
 }
-.draw-div{
+
+.draw-div {
     margin-bottom: 25px;
     margin-top: -20px;
     display: none;
 }
-.outer-div{
+
+.outer-div {
     margin-top: 150px;
+    display: none;
+}
+
+.inputs {
+    margin-top: 250px;
+    margin-right: 500px;
+    margin-left: 500px;
+}
+
+.endgame-div {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 200px;
+}
+
+#playbutton{
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.won-para{
+    font-family: "Playwrite ES", cursive;
+    font-optical-sizing: auto;
+    font-size: 25px;
+    color: #5271ff;
+    font-weight: 400;
+    font-style: normal;
 }
